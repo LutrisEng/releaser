@@ -41,7 +41,8 @@ def update():
     print("  git push --tags")
 
 
-@releaser.command(help="Exits with code zero if this commit is tagged with a valid version number, non-zero otherwise")
+@releaser.command(help="Exits with code zero if this commit is tagged with a" +
+                  " valid version number, non-zero otherwise")
 def check_tag():
     project = Project()
     version = project.tagged_version()
