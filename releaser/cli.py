@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import click
 
 from releaser.project import Project
@@ -38,6 +39,18 @@ def update():
     project.tag_version()
     print("Now, to release this version:")
     print("  git push --tags")
+
+
+@releaser.command(help="Exits with code zero if this commit is tagged with a valid version number, non-zero otherwise")
+def check_tag():
+    project = Project()
+    version = project.tagged_version()
+    if version is not None:
+        print(f"Version {format_version(version)}")
+        sys.exit(0)
+    else:
+        print("Not tagged with release")
+        sys.exit(1)
 
 
 if __name__ == '__main__':

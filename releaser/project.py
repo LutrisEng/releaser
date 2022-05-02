@@ -61,3 +61,13 @@ class Project:
 
     def tag_version(self):
         self.repo.create_tag(format_version(self.current_version()))
+
+    def tagged_version(self) -> Optional[Version]:
+        head = self.repo.head.commit
+        for tag in self.repo.tags:
+            if tag.commit == head:
+                try:
+                    return parse_version(tag.name)
+                except:
+                    pass
+        return None
