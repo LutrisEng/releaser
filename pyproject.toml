@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "releaser"
+version = "0.1.0"
+description = ""
+authors = ["Piper McCorkle <piper@lutris.engineering>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.3"
+GitPython = "^3.1.27"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+autopep8 = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+releaser = 'releaser.cli:releaser'
